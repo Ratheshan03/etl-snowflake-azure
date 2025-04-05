@@ -1,0 +1,6 @@
+azure-functions
+azure-core
+python-dotenv
+pandas
+snowflake-connector-python
+azure-storage-blob
