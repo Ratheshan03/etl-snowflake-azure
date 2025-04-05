@@ -7,11 +7,18 @@ from azure.storage.blob import BlobServiceClient
 
 load_dotenv()
 
-CSV_FILE_PATH = "data/clean_weather.csv"
+# Get absolute path to the data directory
+data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
+
+# Create the directory if it doesn't exist
+os.makedirs(data_dir, exist_ok=True)
+
+CSV_FILE_PATH = os.path.join(data_dir, "clean_weather.csv")
+JSON_FILE_PATH = os.path.join(data_dir, "raw_weather.json")
 
 def transform_data():
     # Load raw data
-    with open("data/raw_weather.json", "r") as file:
+    with open(JSON_FILE_PATH, "r") as file:
         data = json.load(file)
 
     transformed_data = []
@@ -44,7 +51,7 @@ def transform_data():
 
     os.makedirs("data", exist_ok=True)
     df.to_csv(CSV_FILE_PATH, index=False, mode="w", header=True)
-    print(f"✅ Transformed data saved to {CSV_FILE_PATH}")
+    print(f"Transformed data saved to {CSV_FILE_PATH}")
 
     upload_to_blob()
 
@@ -59,10 +66,10 @@ def upload_to_blob():
         with open(CSV_FILE_PATH, "rb") as data:
             blob_client.upload_blob(data, overwrite=True)
 
-        print("✅ Uploaded clean_weather.csv to Azure Blob Storage!")
+        print("Uploaded clean_weather.csv to Azure Blob Storage!")
 
     except Exception as e:
-        print(f"❌ Failed to upload to Azure Blob: {e}")
+        print(f"Failed to upload to Azure Blob: {e}")
 
 if __name__ == "__main__":
     transform_data()

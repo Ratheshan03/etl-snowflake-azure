@@ -17,10 +17,10 @@ def get_snowflake_connection():
             database=os.getenv("SNOWFLAKE_DATABASE"),
             schema=os.getenv("SNOWFLAKE_SCHEMA"),
         )
-        print("✅ Connected to Snowflake!")
+        print("Connected to Snowflake!")
         return conn
     except Exception as e:
-        print(f"❌ Failed to connect to Snowflake: {e}")
+        print(f"Failed to connect to Snowflake: {e}")
         return None
 
 # Load Data from Azure Blob to Snowflake
@@ -43,10 +43,10 @@ def load_data_to_snowflake():
         """
         
         cursor.execute(copy_sql)
-        print("✅ Data successfully loaded into Snowflake!")
+        print("Data successfully loaded into Snowflake!")
     
     except Exception as e:
-        print(f"❌ Error loading data: {e}")
+        print(f"Error loading data: {e}")
     
     finally:
         cursor.close()

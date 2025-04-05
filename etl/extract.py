@@ -25,7 +25,13 @@ def fetch_weather_data():
             print(response.text)
 
 
-    file_path = "data/raw_weather.json"
+    # Get absolute path to the data directory
+    data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
+
+    # Create the directory if it doesn't exist
+    os.makedirs(data_dir, exist_ok=True)
+
+    file_path = os.path.join(data_dir, "raw_weather.json")
 
     if not os.path.exists(file_path):
         with open(file_path, "w") as file:
@@ -35,7 +41,7 @@ def fetch_weather_data():
     with open(file_path, "w") as file:
         json.dump(weather_data, file, indent=4)
 
-    print(f"✅ Weather data saved to {file_path}")
+    print(f"Weather data saved to {file_path}")
 
 if __name__ == "__main__":
     fetch_weather_data()
