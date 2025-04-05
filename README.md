@@ -1,1 +1,1 @@
-# ELTETL Pipeline with Azure & Snowflake
+# ETL Pipeline with Azure & Snowflake

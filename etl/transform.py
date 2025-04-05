@@ -2,6 +2,10 @@ import json
 import os
 import pandas as pd
 from datetime import datetime, timezone
+from dotenv import load_dotenv
+from azure.storage.blob import BlobServiceClient
+
+load_dotenv()
 
 CSV_FILE_PATH = "data/clean_weather.csv"
 
@@ -26,7 +30,7 @@ def transform_data():
             "humidity_%": city_data["main"]["humidity"],
             "wind_speed_m/s": city_data["wind"]["speed"],
             "wind_direction_deg": city_data["wind"]["deg"],
-            "wind_gust_m/s": city_data["wind"].get("gust", None),  # Handle missing gust values
+            "wind_gust_m/s": city_data["wind"].get("gust", None),
             "cloud_coverage_%": city_data["clouds"]["all"],
             "weather_main": city_data["weather"][0]["main"],
             "weather_description": city_data["weather"][0]["description"],
@@ -38,12 +42,27 @@ def transform_data():
     # Convert to DataFrame
     df = pd.DataFrame(transformed_data)
 
-    if not os.path.exists(CSV_FILE_PATH):
-        df.to_csv(CSV_FILE_PATH, index=False, mode="w", header=True)
-    else:
-        df.to_csv(CSV_FILE_PATH, index=False, mode="a", header=False)
-
+    os.makedirs("data", exist_ok=True)
+    df.to_csv(CSV_FILE_PATH, index=False, mode="w", header=True)
     print(f"✅ Transformed data saved to {CSV_FILE_PATH}")
+
+    upload_to_blob()
+
+def upload_to_blob():
+    try:
+        connect_str = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
+        container_name = os.getenv("AZURE_CONTAINER_NAME")
+
+        blob_service_client = BlobServiceClient.from_connection_string(connect_str)
+        blob_client = blob_service_client.get_blob_client(container=container_name, blob="clean_weather.csv")
+
+        with open(CSV_FILE_PATH, "rb") as data:
+            blob_client.upload_blob(data, overwrite=True)
+
+        print("✅ Uploaded clean_weather.csv to Azure Blob Storage!")
+
+    except Exception as e:
+        print(f"❌ Failed to upload to Azure Blob: {e}")
 
 if __name__ == "__main__":
     transform_data()
