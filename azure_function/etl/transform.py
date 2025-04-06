@@ -8,7 +8,7 @@ from azure.storage.blob import BlobServiceClient
 load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_DIR = os.path.join(BASE_DIR, "data")
+DATA_DIR = "/tmp"
 os.makedirs(DATA_DIR, exist_ok=True)
 
 CSV_FILE_PATH = os.path.join(DATA_DIR, "clean_weather.csv")

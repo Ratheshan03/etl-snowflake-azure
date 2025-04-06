@@ -9,7 +9,7 @@ from etl.load import run_load
 
 app = func.FunctionApp()
 
-@app.timer_trigger(schedule="0 */5 * * * *", arg_name="myTimer", run_on_startup=True, use_monitor=False) 
+@app.timer_trigger(schedule="0 */30 * * * *", arg_name="myTimer", run_on_startup=True, use_monitor=False) 
 def etl_trigger(myTimer: func.TimerRequest) -> None:
     logging.info('🔁 Starting automated ETL...')
 
@@ -28,4 +28,3 @@ def etl_trigger(myTimer: func.TimerRequest) -> None:
 
     except Exception as e:
         logging.error(f"❌ ETL pipeline failed: {e}")
-        
