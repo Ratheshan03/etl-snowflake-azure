@@ -47,5 +47,5 @@ def load_data_to_snowflake():
         cursor.close()
         conn.close()
 
-if __name__ == "__main__":
+def run_load():
     load_data_to_snowflake()

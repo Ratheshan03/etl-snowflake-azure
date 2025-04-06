@@ -32,5 +32,5 @@ def fetch_weather_data():
 
     print(f"Weather data saved to {FILE_PATH}")
 
-if __name__ == "__main__":
+def run_extract():
     fetch_weather_data()

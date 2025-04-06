@@ -66,5 +66,5 @@ def upload_to_blob():
     except Exception as e:
         print(f"Failed to upload to Azure Blob: {e}")
 
-if __name__ == "__main__":
+def run_transform():
     transform_data()

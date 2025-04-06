@@ -2,6 +2,7 @@ azure-functions
 azure-core
 python-dotenv
 pandas
+requests
 snowflake-connector-python
 azure-storage-blob
 asn1crypto==1.5.1
