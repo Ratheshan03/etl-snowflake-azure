@@ -2,12 +2,9 @@ import os
 import snowflake.connector
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
-# Snowflake Connection
 def get_snowflake_connection():
-    """Establish a connection to Snowflake"""
     try:
         conn = snowflake.connector.connect(
             user=os.getenv("SNOWFLAKE_USER"),
@@ -23,7 +20,6 @@ def get_snowflake_connection():
         print(f"Failed to connect to Snowflake: {e}")
         return None
 
-# Load Data from Azure Blob to Snowflake
 def load_data_to_snowflake():
     conn = get_snowflake_connection()
     if not conn:
@@ -32,7 +28,6 @@ def load_data_to_snowflake():
     try:
         cursor = conn.cursor()
         
-        # Copy data into the Snowflake table
         copy_sql = """
         COPY INTO weather_data (TIMESTAMP, CITY, COUNTRY, LATITUDE, LONGITUDE, TEMPERATURE_C, 
                         FEELS_LIKE_C, MIN_TEMP_C, MAX_TEMP_C, PRESSURE_HPA, HUMIDITY, 

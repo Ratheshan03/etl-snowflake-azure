@@ -1,0 +1,6 @@
+timestamp,city,country,latitude,longitude,temperature_C,feels_like_C,min_temp_C,max_temp_C,pressure_hPa,humidity_%,wind_speed_m/s,wind_direction_deg,wind_gust_m/s,cloud_coverage_%,weather_main,weather_description,visibility_m,sunrise_utc,sunset_utc
+2025-04-06 05:05:14,London,GB,51.5085,-0.1257,5.05,5.05,3.76,6.11,1022,88,1.03,0,,21,Clouds,few clouds,10000,2025-04-06 10:54:12,2025-04-07 00:11:11
+2025-04-06 05:05:14,Chennai,IN,13.0878,80.2785,33.01,40.01,32.22,33.94,1011,64,2.06,170,,40,Clouds,scattered clouds,6000,2025-04-06 06:01:41,2025-04-06 18:20:35
+2025-04-06 05:05:14,New York,US,40.7143,-74.006,6.45,2.87,5.49,7.34,1013,92,5.66,40,,100,Mist,mist,4023,2025-04-06 16:00:52,2025-04-07 04:55:26
+2025-04-06 05:05:14,Kandy,LK,7.2955,80.6356,24.53,25.31,24.53,24.53,1013,87,1.15,307,1.59,84,Clouds,broken clouds,10000,2025-04-06 06:03:02,2025-04-06 18:16:23
+2025-04-06 05:05:14,Colombo,LK,6.9319,79.8478,29.97,34.73,29.97,29.97,1011,69,1.56,250,1.73,85,Clouds,overcast clouds,10000,2025-04-06 06:06:21,2025-04-06 18:19:22

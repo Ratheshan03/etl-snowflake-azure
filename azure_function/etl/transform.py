@@ -7,14 +7,12 @@ from azure.storage.blob import BlobServiceClient
 
 load_dotenv()
 
-# Get absolute path to the data directory
-data_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+os.makedirs(DATA_DIR, exist_ok=True)
 
-# Create the directory if it doesn't exist
-os.makedirs(data_dir, exist_ok=True)
-
-CSV_FILE_PATH = os.path.join(data_dir, "clean_weather.csv")
-JSON_FILE_PATH = os.path.join(data_dir, "raw_weather.json")
+CSV_FILE_PATH = os.path.join(DATA_DIR, "clean_weather.csv")
+JSON_FILE_PATH = os.path.join(DATA_DIR, "raw_weather.json")
 
 def transform_data():
     # Load raw data
@@ -46,10 +44,7 @@ def transform_data():
             "sunset_utc": datetime.fromtimestamp(city_data["sys"]["sunset"]).strftime('%Y-%m-%d %H:%M:%S'),
         })
 
-    # Convert to DataFrame
     df = pd.DataFrame(transformed_data)
-
-    os.makedirs("data", exist_ok=True)
     df.to_csv(CSV_FILE_PATH, index=False, mode="w", header=True)
     print(f"Transformed data saved to {CSV_FILE_PATH}")
 
