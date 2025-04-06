@@ -2,6 +2,7 @@ import azure.functions as func
 import os
 import logging
 from dotenv import load_dotenv
+
 from etl.extract import run_extract
 from etl.transform import run_transform
 from etl.load import run_load
@@ -27,3 +28,4 @@ def etl_trigger(myTimer: func.TimerRequest) -> None:
 
     except Exception as e:
         logging.error(f"❌ ETL pipeline failed: {e}")
+        
