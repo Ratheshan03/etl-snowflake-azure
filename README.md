@@ -69,7 +69,7 @@ This project collects live weather data from multiple cities, processes it, and 
                            +------------v------------+
                            |      Grafana Panels     |
                            +-------------------------+
-
+```
 
 ---
 
@@ -130,7 +130,7 @@ This project collects live weather data from multiple cities, processes it, and 
 ```bash
 git clone https://github.com/Ratheshan03/etl-snowflake-azure.git
 cd etl-snowflake-azure
-
+```
 
 ### 2. Setup Python Environment
 
@@ -138,12 +138,12 @@ cd etl-snowflake-azure
 python -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
-
+```
 
 ### 3. Configure Environment Variables
 Create .env file or set environment variables:
 
-
+```
 API_KEY=<your_openweathermap_api_key>
 AZURE_STORAGE_CONNECTION_STRING=<your_blob_connection_string>
 SNOWFLAKE_USER=<user>
@@ -153,16 +153,17 @@ SNOWFLAKE_DATABASE=ETL_DB
 SNOWFLAKE_SCHEMA=ETL_SCHEMA
 SNOWFLAKE_WAREHOUSE=ETL_WH
 SNOWFLAKE_ROLE=<role>
-
-
+```
 
 ### 4. Deploy Azure Function
 Use the Azure Functions Core Tools or Azure Portal
 
-⏲️ Timer Trigger CRON: 0 0 0,12 * * * (runs every 12 hours)
+⏲️ Timer Trigger CRON: `0 0 0,12 * * *` (runs every 12 hours)
 
-⏱️ Automation and Scheduling
-Azure Functions timer trigger (CRON: 0 0 0,12 * * *)
+---
+
+## ⏱️ Automation and Scheduling
+Azure Functions timer trigger (CRON: `0 0 0,12 * * *`)
 
 ETL pipeline runs at:
 - 00:00 UTC
@@ -170,47 +171,46 @@ ETL pipeline runs at:
 
 Also executes on startup of function host
 
-
+---
 
 ## 👥 How to Contribute
 Feel free to contribute to improve or extend this project:
 
 ### 💡 Ideas
-Add more cities or make it dynamic
-
-Include severe weather alerts
-
-Add historical weather data trend analysis
+- Add more cities or make it dynamic
+- Include severe weather alerts
+- Add historical weather data trend analysis
 
 ### 🛠️ Contribution Steps
---- Fork the repo
-Create your feature branch
+1. Fork the repo
+2. Create your feature branch
+```bash
 git checkout -b feature/awesome-feature
-
-Commit your changes
+```
+3. Commit your changes
+```bash
 git commit -m "Add awesome feature"
-
-Push to the branch
+```
+4. Push to the branch
+```bash
 git push origin feature/awesome-feature
+```
+5. Open a Pull Request
 
-Open a Pull Request
-
+---
 
 ## 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
+---
+
 ## 📚 References & Docs
-OpenWeatherMap API Docs
-
-Azure Blob Storage
-
-Azure Functions
-
-Snowflake Documentation
-
-Grafana Snowflake Plugin
-
-Grafana Cloud 
+- [OpenWeatherMap API Docs](https://openweathermap.org/api)
+- [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/)
+- [Azure Functions](https://learn.microsoft.com/en-us/azure/azure-functions/)
+- [Snowflake Documentation](https://docs.snowflake.com/)
+- [Grafana Snowflake Plugin](https://grafana.com/grafana/plugins/grafana-snowflake-datasource/)
+- [Grafana Cloud](https://grafana.com/products/cloud/)
 
 ---
 
