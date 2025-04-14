@@ -9,7 +9,7 @@ from etl.load import run_load
 
 app = func.FunctionApp()
 
-@app.timer_trigger(schedule="0 */30 * * * *", arg_name="myTimer", run_on_startup=True, use_monitor=False) 
+@app.timer_trigger(schedule="0 0 */12 * * *", arg_name="myTimer", run_on_startup=True, use_monitor=False) 
 def etl_trigger(myTimer: func.TimerRequest) -> None:
     logging.info('🔁 Starting automated ETL...')
 
