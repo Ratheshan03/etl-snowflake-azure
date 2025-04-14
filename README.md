@@ -3,7 +3,7 @@
 Welcome to the **Weather Data ETL Pipeline** project! This end-to-end solution automates weather data extraction, transformation, loading (ETL), and visualization using modern cloud and analytics tools. Built with modular, cloud-native components and a Grafana dashboard for real-time monitoring.
 
 > **Live Dashboard**: [Grafana Weather Dashboard](#)  
-> *(Replace with actual URL or instructions to access it)*
+> *(https://ratheshan03.grafana.net/goto/SzGuhrANg?orgId=1)*
 
 ---
 
@@ -185,15 +185,15 @@ Feel free to contribute to improve or extend this project:
 1. Fork the repo
 2. Create your feature branch
 ```bash
-git checkout -b feature/awesome-feature
+git checkout -b feature/username-new-feature
 ```
 3. Commit your changes
 ```bash
-git commit -m "Add awesome feature"
+git commit -m "Add new feature"
 ```
 4. Push to the branch
 ```bash
-git push origin feature/awesome-feature
+git push origin feature/username-new-feature
 ```
 5. Open a Pull Request
 
